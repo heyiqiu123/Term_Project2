@@ -301,7 +301,7 @@
 /* 4 . ==========今日推荐=========== */
 
 .recommend {
-    height: 544px;
+    height: 554px;
 }
 
 
@@ -333,7 +333,7 @@
 
 /* 列表容器 */
 
-.recommend .remcommend-content ul {
+.recommend .recommend-content ul {
     width: 1190px;
     height: 498px;
     margin: 0 auto;
@@ -343,26 +343,27 @@
 
 /* 推荐列表Li */
 
-.recommend .remcommend-content ul li {
-    width: 194px;
+.recommend .recommend-content ul li {
+    width: 196px;
     height: 247px;
     background-color: #fff;
     float: left;
-    margin-top: 2px;
+    /* margin-top: 2px; */
     margin-left: 2px;
+	margin-bottom: 2px;
 }
 
 
 /* 推荐内容主体结构 */
 
-.recommend .remcommend-content ul li {
+.recommend .recommend-content ul li {
     text-align: center;
 }
 
 
 /* 推荐内容字体设置 */
 
-.recommend .remcommend-content ul li p {
+.recommend .recommend-content ul li p {
     text-align: left;
     text-indent: 10px;
     font-size: 14px;
@@ -371,16 +372,16 @@
 
 /* 限时标签 */
 
-.recommend .remcommend-content ul li p.limit-time {
+.recommend .recommend-content ul li p.limit-time {
     text-align: left;
     text-indent: 0;
 }
 
-.recommend .remcommend-content ul li p.text {
+.recommend .recommend-content ul li p.text {
     color: red;
 }
 
-.recommend .remcommend-content ul li p.price {
+.recommend .recommend-content ul li p.price {
     color: #ff6700;
     font-size: 18px;
     margin-top: 5px;
@@ -464,13 +465,13 @@
 .ebooks .left-box .centent .ads .top-img {
     width: 236px;
     height: 290px;
-    background-color: hotpink;
+    /* background-color: hotpink; */
 }
 
 .ebooks .left-box .centent .ads .buttom-text {
     height: 160px;
     width: 236px;
-    background-color: gray;
+    background-color: white;
 }
 
 .ebooks .left-box .centent .ads .buttom-text ul {
@@ -496,7 +497,7 @@
     background-color: #ccc;
 }
 
-.ebooks .left-box .centent .ebooks-list ul li {
+.ebooks .left-box .centent .ebooks-list > ul > li {
     height: 223px;
     width: 165px;
     background-color: white;
@@ -506,34 +507,41 @@
     text-align: center;
 }
 
-.ebooks .left-box .centent .ebooks-list ul li img {
+.ebooks .left-box .centent .ebooks-list > ul > li > img {
     margin: 15px auto;
 }
 
-.ebooks .left-box .centent .ebooks-list ul li p {
+.ebooks .left-box .centent .ebooks-list > ul > li > p {
     text-align-last: left;
     text-indent: 10px;
 }
 
-.ebooks .left-box .centent .ebooks-list ul li p:first-child {
+.ebooks .left-box .centent .ebooks-list > ul > li > p:first-child {
     font-size: 18px;
 }
 
-.ebooks .left-box .centent .ebooks-list ul li p:not(:first-child) {
-    color: #ff6700;
+.ebooks .left-box .centent .ebooks-list > ul > li > p:not(:first-child) {
+    color: red;
 }
 
-.ebooks .left-box .centent .ebooks-list ul li p:last-child {
+.ebooks .left-box .centent .ebooks-list > ul > li > p:last-child {
     font-size: 18px;
-    margin-top: 15px;
+    
 }
 
-.ebooks .left-box .centent .ebooks-list ul li:not(:first-child) {
-    background-color: #fff;
+.ebooks .left-box .centent .ebooks-list > ul > li:not(:first-child) {
+    /* background-color: #fff; */
 }
-
-.ebooks .left-box .centent .ebooks-list ul li:first-child {
+/* 一个特别的li,将来的轮播容器 */
+.ebooks .left-box .centent .ebooks-list > ul > li:first-child {
     width: 332px;
+	height: 223px;
+	background-color: green;
+}
+.ebooks .left-box .centent .ebooks-list > ul > li:first-child .pptbox{
+	width: 332px;
+	height: 223px;
+	background-color: pink;
 }
 
 
@@ -557,29 +565,30 @@
 }
 
 .ebooks .right-box ul li {
-    line-height: 42px;
+    line-height: 36px;
     font-size: 16PX;
     text-indent: 5px;
 }
-
+.ebooks .right-box ul li .desc.img {
+    margin-right: 9px;
+}
+/* 新书列表交互相关样式 */
 .ebooks .right-box ul li .desc {
     font-size: 13px;
     line-height: 16px;
     height: 150px;
     color: #333;
-    /* 隐藏 */
+    /* 隐藏 :详情默认所有都是隐藏的 只有第一个显示*/
     display: none;
 }
 
-.ebooks .right-box ul li .desc.img {
-    margin-right: 9px;
-}
-
-.ebooks .right-box ul li:first-child p:nth-child(1) {
+.ebooks .right-box ul li:first-child .ebooks-title{
+	/* 默认所有标题都显示 只要第一个隐藏 */
     display: none;
 }
 
-.ebooks .right-box ul li .desc.active {
+.ebooks .right-box ul li:first-child .desc{
+	/* 默认第一个显示详情 */
     display: block;
 }
 
