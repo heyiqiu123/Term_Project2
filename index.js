@@ -18,7 +18,7 @@ $(function() {
     });
 	
 	
-	// //电子书tab切换
+
 	/* 电子书tab切换 */
 	$('.ebooks-list').eq(1).hide();
 	$('.ebooks-list').eq(2).hide();
@@ -30,29 +30,6 @@ $(function() {
 	    // 内容切换
 	    $('.ebooks-list').eq(index).show().siblings('.ebooks-list').hide();
 	})
-	// $('.ebooks-list').eq(1).hide();
-	// $('.ebooks-list').eq(2).hide();
-	// $('ebooks-nav>li').mouseenter(function(){
-	// // 	//导航高亮颜色切换
-	// $(this).addClass('active').siblings('li').removeClass('active');
-	// // 	//获取索引
-	// var index=$(this).index();
-	// // 	//内容切换
-	// $('.ebooks-list').eq(index).show().siblings('.ebooks-list').hide();
-	// });
-	
-	// $(function(){
-	// 	$(".ebooks-nav >li").click(function(){//选中tabbox中的li
-	// 		$(this).addClass("active").siblings('li').removeClass("active");//被点击的div添加active，其他的div移除active
-	// 		var index = $(this).index();//获取当前的li的索引值.index()方法
-	// 		$('.ebooks-list').eq(index).show().siblings('ebooks-list').hide();
-	// 		// $(this).parsent().siblings().children().eq(index).addClass("active")
-	// 		// .siblings().removeClass("active")
-	// // 		// $(".ebooks-title>div").eq(index).show().siblings().hide();//显示或者隐藏
-	
-	// 	})
-	// })
-
     // 图书/电子书轮播
 	$('#ebooks-banner').tyslide({
 	    boxh: 223, //盒子的高度
@@ -115,10 +92,14 @@ $(function() {
 	})
 	// 推广商品
 	$('.promotion .promotion-title ul li').mouseenter(function(){
+		// 导航激活类的切换
 		$(this).addClass('active').siblings().removeClass('active')
+		// 内容切换
+		// 获取对应的索引
 		var index=$(this).index();
 		console.log(index);
 		console.log($('.promotion .promotion-content .inner-box'))
+		// 左右移动
 		$('.promotion .promotion-content .inner-box').animate({
 			'left':-index *1170
 		},300)
@@ -139,7 +120,50 @@ $(function() {
 		// 返回顶部功能(动态添加的元素，需要使用事件委托 才能绑定事件)
 		$('.backToTop').click(function(){
 			$('html,body').animate({
-				scrollTop:0
+				scrollTop:0//设置滚动条的位置
 			},300)
 		})
+	// 顶部搜索框交互
+	$(document).scroll(function(){
+	    //获取到顶部距离
+	    var topDistance=$('html, body').scrollTop();
+	    if(topDistance>500){
+	        //如果滚动距离大于500就滑下来
+	        $('.top-search-box').slideDown(300)
+	
+	    }else{
+	        //否则，收回去
+	        $('.top-search-box').slideUp(300)
+	
+	    }
+	})	
+
+	// 二维码滑出效果
+	$('.qr-code .ticket').hover(function(){
+		// 让二维码滑出来
+		$('.qr-code div').stop(true).animate({
+			left:'-100px'
+		})
+	},function(){
+		// 让二维码收回去
+		$('.qr-code div').stop(true).animate({
+			left:0
+		})
 	})
+
+    
+    // 楼层跳转效果
+    $('.floor li').click(function(){
+        //获取索引
+        var index=$(this).index();
+        //选中每一个板块到顶部的偏移
+        var topOffset=$('.floorBox').eq(index).offset().top;//offset().top获取绑定元素上边框对相对于html上边界的偏移量
+        //让滚动条滚到这个位置
+        $('html,body').animate({
+           scrollTop:topOffset-100
+        })
+
+    })
+
+
+})
